@@ -1,12 +1,13 @@
 package com.ogocer.coroutinesretrofitmvvm.ui.main.viewmodel
 
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import com.ogocer.coroutinesretrofitmvvm.data.repository.MainRepository
 import com.ogocer.coroutinesretrofitmvvm.utils.Resource
 import kotlinx.coroutines.Dispatchers
 import java.lang.Exception
 
-class MainViewModel(private val mainRepository: MainRepository) {
+class MainViewModel(private val mainRepository: MainRepository):ViewModel() {
 
     fun getUsers() = liveData(Dispatchers.IO) {
         emit(Resource.loading(data = null))
