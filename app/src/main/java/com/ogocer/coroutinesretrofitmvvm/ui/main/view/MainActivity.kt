@@ -2,6 +2,7 @@ package com.ogocer.coroutinesretrofitmvvm.ui.main.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Adapter
 import android.widget.ProgressBar
@@ -28,6 +29,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpViewModel()
+        setUpUI()
+        setObservers()
     }
 
     private fun setUpViewModel() {
@@ -64,6 +68,7 @@ class MainActivity : AppCompatActivity() {
                     Status.ERROR ->{
                         recyclerView.visibility = View.INVISIBLE
                         progressBar.visibility = View.GONE
+                        Log.e("hey","${it.message}")
                         Toast.makeText(this,it.message,Toast.LENGTH_SHORT).show()
                     }
                     Status.LOADING->{
